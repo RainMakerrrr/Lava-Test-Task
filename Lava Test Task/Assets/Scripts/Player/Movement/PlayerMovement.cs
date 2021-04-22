@@ -13,7 +13,7 @@ namespace Player.Movement
 
         private NavMeshAgent _agent;
         private Camera _camera;
-
+        
 
         private void Start()
         {
@@ -37,5 +37,7 @@ namespace Player.Movement
 
             _agent.SetDestination(hit.point);
         }
+
+        public void ReduceSpeed() => _agent.speed = 0f;
     }
 }

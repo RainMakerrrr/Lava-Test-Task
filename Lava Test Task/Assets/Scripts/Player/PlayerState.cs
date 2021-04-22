@@ -42,6 +42,7 @@ namespace Player
                     _aim.enabled = false;
                     break;
                 case State.Shooting:
+                    _movement.ReduceSpeed();
                     _movement.enabled = false;
                     _aim.enabled = true;
                     StartCoroutine(RaiseHand());
