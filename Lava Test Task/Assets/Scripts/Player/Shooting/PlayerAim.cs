@@ -50,7 +50,7 @@ namespace Player.Shooting
             var direction = mousePosition - transform.position;
             var targetRotation = Quaternion.LookRotation(direction);
 
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 4f * Time.deltaTime);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 20f * Time.deltaTime);
         }
     }
 }

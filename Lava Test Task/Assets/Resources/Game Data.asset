@@ -15,5 +15,6 @@ MonoBehaviour:
   _moveSpeed: 3
   _fireRate: 2
   _bulletForce: 15
-  _enemyImpulseForce: 600
-  _bulletForceMode: 5
+  _bulletForceMode: 1
+  _enemyImpulseForce: 0
+  _enemyForceMode: 5

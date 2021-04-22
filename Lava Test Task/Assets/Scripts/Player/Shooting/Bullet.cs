@@ -20,6 +20,6 @@ namespace Player.Shooting
         }
 
         public void AddForceToBullet(Vector3 direction) =>
-            _rigidbody.AddForce(direction * _data.BulletForce, ForceMode.Impulse);
+            _rigidbody.AddForce(direction * _data.BulletForce, _data.BulletForceMode);
     }
 }
