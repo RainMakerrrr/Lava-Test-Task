@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections;
 using Player.Movement;
 using Player.Shooting;
 using UnityEngine;
-using UnityEngine.Animations.Rigging;
 
 namespace Player
 {
     public class PlayerState : MonoBehaviour
     {
-        [SerializeField] private Rig _armRig;
-
         private PlayerMovement _movement;
         private PlayerAim _aim;
 
@@ -45,21 +41,13 @@ namespace Player
                     _movement.ReduceSpeed();
                     _movement.enabled = false;
                     _aim.enabled = true;
-                    StartCoroutine(RaiseHand());
+                    _aim.RaiseHand();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(state), state, null);
             }
         }
-
-        private IEnumerator RaiseHand()
-        {
-            while (_armRig.weight < 1f)
-            {
-                _armRig.weight = Mathf.MoveTowards(_armRig.weight, 1f, 3f * Time.deltaTime);
-                yield return null;
-            }
-        }
+        
     }
 
     public enum State

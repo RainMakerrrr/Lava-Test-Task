@@ -1,10 +1,14 @@
-﻿using Input;
+﻿using System.Collections;
+using Input;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 
 namespace Player.Shooting
 {
     public class PlayerAim : MonoBehaviour
     {
+        [SerializeField] private Rig _armRig;
+        
         [SerializeField] private GameData _data;
         
         [SerializeField] private Transform _target;
@@ -51,6 +55,16 @@ namespace Player.Shooting
             var targetRotation = Quaternion.LookRotation(direction);
 
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 20f * Time.deltaTime);
+        }
+
+        public void RaiseHand() => StartCoroutine(RaiseHandRoutine());        
+        private IEnumerator RaiseHandRoutine()
+        {
+            while (_armRig.weight < 1f)
+            {
+                _armRig.weight = Mathf.MoveTowards(_armRig.weight, 1f, 3f * Time.deltaTime);
+                yield return null;
+            }
         }
     }
 }
